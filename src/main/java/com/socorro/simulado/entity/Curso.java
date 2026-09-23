@@ -14,15 +14,21 @@ public class Curso {
 
     private String descricao;
 
+    private StatusCurso status;
+
+    private PrioridadeCurso prioridade;
+
     private boolean deleted = false;
 
     public Curso() {
     }
 
-    public Curso(Long id, String nome, String descricao, boolean deleted) {
+    public Curso(Long id, String nome, String descricao, StatusCurso status, PrioridadeCurso prioridade, boolean deleted) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
+        this.status = status;
+        this.prioridade = prioridade;
         this.deleted = deleted;
     }
 
@@ -48,6 +54,23 @@ public class Curso {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+
+    public void setStatus(StatusCurso status) {
+        this.status = status;
+    }
+
+    public StatusCurso getStatus() {
+        return status;
+    }
+
+    public void setPrioridade(PrioridadeCurso prioridade) {
+        this.prioridade = prioridade;
+    }
+
+    public PrioridadeCurso getPrioridade() {
+        return prioridade;
     }
 
     public boolean isDeleted() {
