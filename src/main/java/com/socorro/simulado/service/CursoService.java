@@ -1,7 +1,6 @@
 package com.socorro.simulado.service;
 
 import com.socorro.simulado.entity.Curso;
-import com.socorro.simulado.exception.CursoNaoEncontradoException;
 import com.socorro.simulado.repository.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +30,7 @@ public class CursoService {
 
     public void deletar(Long id) {
         Curso curso = cursoRepository.findById(id)
-                .orElseThrow(() -> new CursoNaoEncontradoException("Curso não encontrado"));
+                .orElseThrow(() -> new RuntimeException("Curso não encontrado"));
         curso.setDeleted(true);
         cursoRepository.save(curso);
     }

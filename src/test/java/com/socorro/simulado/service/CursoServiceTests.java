@@ -1,7 +1,6 @@
 package com.socorro.simulado.service;
 
 import com.socorro.simulado.entity.Curso;
-import com.socorro.simulado.exception.CursoNaoEncontradoException;
 import com.socorro.simulado.repository.CursoRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -105,6 +104,6 @@ public class CursoServiceTests {
     public void test_shouldThrowExceptionWhenCursoNotFoundOnDelete() {
         Mockito.when(cursoRepository.findById(99L)).thenReturn(Optional.empty());
 
-        Assertions.assertThrows(CursoNaoEncontradoException.class, () -> cursoService.deletar(99L));
+        Assertions.assertThrows(RuntimeException.class, () -> cursoService.deletar(99L));
     }
 }
