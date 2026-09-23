@@ -84,6 +84,31 @@ public class CursoServiceTests {
         Assertions.assertThrows(RuntimeException.class, () -> cursoService.criar(curso));
     }
 
+    
+
+    @Test
+    public void test_shouldThrowExceptionWhenStatusIsDeletedTrueOnCreate() {
+        Curso curso = new Curso();
+        curso.setNome("Java");
+        curso.setDescricao("Curso de Java");
+        curso.setDeleted(true);
+
+        Assertions.assertThrows(RuntimeException.class, () -> cursoService.criar(curso));
+    }
+
+    @Test
+    public void test_shouldThrowExceptionWhenPriorityIsNullOnCreate() {
+        Curso curso = new Curso();
+        curso.setNome("Java");
+        curso.setDescricao("Curso de Java");
+        curso.setDeleted(false);
+        curso.setPrioridade(null);
+
+        Assertions.assertThrows(RuntimeException.class, () -> cursoService.criar(curso));
+    }
+
+
+
     @Test
     public void test_shouldLogicalDeleteWhenCursoExists() {
         Curso curso = new Curso();
